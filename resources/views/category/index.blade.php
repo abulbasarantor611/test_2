@@ -37,7 +37,8 @@
                                         <div class="btn-group" role="group">
                                             <a href="{{route('category.details',$cat->id)}}" class="btn btn-info btn-sm">View</a>
                                             <a href="{{route('category.edit',$cat->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{{route('category.delete',$cat->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                                            <a href="{{route('category.status',$cat->id)}}" class="btn {{($cat->status == 1)? "bg-warning" : "bg-success"}} btn-sm">{{($cat->status == 1)? "Deactive" : "Active"}}</a>
                                         </div>
                                     </td>
                                 </tr>

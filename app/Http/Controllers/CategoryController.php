@@ -10,9 +10,11 @@ class CategoryController extends Controller
 {
     public function list(){
 
-        // $data = ['categories'=>Category::all()];
+        // // $data = ['categories'=>Category::all()];
+
         // $categories = Category::all();
         // return view('category.index',['categories'=>$categories]);
+
         // return view('category.index',compact('categories'));
 
 
@@ -48,5 +50,25 @@ class CategoryController extends Controller
         $data['cat'] = Category::findOrFail($id);
         // $data['cat'] = Category::where('id',$id)->first();
         return view('category.view',$data);
+    }
+
+    function delete($id){
+        $cat = Category::findOrFail($id);
+        $cat->delete();
+        // return redirect()->back();
+        return redirect()->route('category.list');
+    }
+
+    function status($id){
+        $cat = Category::findOrFail($id);
+        if($cat->status == 1){
+            $cat->status = 0;
+        }else{
+            $cat->status = 1;
+        }
+        $cat->update();
+
+        // return redirect()->back();
+        return redirect()->route('category.list');
     }
 }
